@@ -2,3 +2,22 @@ body {
 	padding: 0;
 	margin: 0;
 }
+#board_wrapper {
+   /*width calculated based on the row width and height*/
+   width: 450px;
+}
+#board_wrapper ul {
+	display: flex;
+	display: -webkit-flex;
+	display: -mz-flex;
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+}
+#board_wrapper ul li {
+	list-style: none;
+	width: 50px;
+	height: 50px;
+	border:1px solid #ccc;
+	box-sizing: border-box;
+}
