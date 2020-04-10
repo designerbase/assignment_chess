@@ -10,10 +10,6 @@ var config = {
 
 window.onload = function() {
 	createBoard();
-	selectBox();
-	document.querySelector('#clear').addEventListener('click',function() {
-		clear();
-	});
 }
 
 function createBoard() {
@@ -27,16 +23,9 @@ function createBoard() {
 		    if(j%2!=0 && i%2==0 || j%2==0 && i%2!=0) {
 		    	append_child.setAttribute("style","background-color:"+config.secondary__color);
 		    }
-		    append_child.addEventListener("click",selectBox);
+		    append_child.addEventListener("click",chooseDiagonals);
 			play_board[0].appendChild(append_child);
 		}
-	}
-}
-
-function selectBox(e) {
-	if(e) {
-		highlightBox(e.target);
-		chooseDiagonals(e.target);
 	}
 }
 
@@ -49,8 +38,9 @@ function highlightBox(column) {
 	column.setAttribute("style","background-color:red");
 }
 
-function chooseDiagonals(elem) {
+function chooseDiagonals(e) {
 	clear();
+	elem = e.target;
 	var get_index = [elem.getAttribute('data-index')];
 	get_index = get_index[0].split(',');
 	var x = parseInt(get_index[0]);
