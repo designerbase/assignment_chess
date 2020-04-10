@@ -3,10 +3,7 @@
 */
 var config = {
 	"size":8,
-	"primary__color":"#fff",
 	"secondary__color":"#000",
-	"custom_message":"your message",
-	"is_responsive":false,
 	"append_element":"li",
 	"board":"#board_wrapper ul",
 }
@@ -53,11 +50,12 @@ function highlightBox(column) {
 }
 
 function chooseDiagonals(elem) {
-	console.log(elem);
+	clear();
 	var get_index = [elem.getAttribute('data-index')];
 	get_index = get_index[0].split(',');
 	var x = parseInt(get_index[0]);
 	var y = parseInt(get_index[1]);
+	callHighlight([x,y]);
 	for(var i=x-1,j=y-1;i>=0 && j>=0 ; i--,j--){
 	    callHighlight([i,j]);
 	}
@@ -69,7 +67,7 @@ function chooseDiagonals(elem) {
 	}
 	for(var i=x+1,j=y+1;i<=7 && j<=7; i++,j++){
 	    callHighlight([i,j]);
-	 }
+	}
 }
 
 function callHighlight(data) {
