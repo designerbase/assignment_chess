@@ -12,30 +12,40 @@ var config = {
 }
 
 window.onload = function() {
-	createBoard(config.size);
+	createBoard();
+	selectBox();
 }
 
-function createBoard(size) {
+function createBoard() {
 	var play_board = document.querySelectorAll(config.board);
-	for(var i=0;i<size;i++) {
-		for(var j="0";j<size;j++) {
+	for(var i=0;i<config.size;i++) {
+		for(var j="0";j<config.size;j++) {
 		    var append_child = document.createElement(config.append_element)
 		    if(j%2!=0 && i%2==0 || j%2==0 && i%2!=0) {
 		    	append_child.setAttribute("style","background-color:"+config.secondary__color);
 		    }
+		    append_child.addEventListener("click",selectBox);
 			play_board[0].appendChild(append_child);
 		}
 	}
 }
 
-function makeMove() {
-
+function selectBox(e) {
+	if(e) {
+		highlightBox(e.target);
+		chooseDiagonals();
+	}
 }
 
 function clear() {
-
+	document.querySelectorAll('#board_wrapper ul')[0].innerHTML = "";
+	createBoard();
 }
 
-function highlightBox() {
+function highlightBox(column) {
+	column.setAttribute("style","background-color:red");
+}
 
+function chooseDiagonals() {
+	
 }
